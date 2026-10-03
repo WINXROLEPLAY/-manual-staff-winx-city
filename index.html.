@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Manual da Staff | WINX CITY</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #08090d;
+    color: #f5f5f5;
+    line-height: 1.7;
+}
+
+/* TOPO */
+header {
+    min-height: 330px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 20px;
+    background:
+        radial-gradient(circle at top, #ff4fa3 0%, #7c164d 15%, #08090d 55%);
+    border-bottom: 2px solid #ff3d9a;
+}
+
+.logo {
+    font-size: 18px;
+    letter-spacing: 5px;
+    color: #ff65b0;
+    font-weight: bold;
+}
+
+header h1 {
+    font-size: clamp(42px, 8vw, 78px);
+    margin: 10px 0;
+    font-weight: 900;
+}
+
+header h1 span {
+    color: #ff3d9a;
+}
+
+header p {
+    color: #cfcfcf;
+    font-size: 18px;
+}
+
+/* MENU */
+.menu {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: rgba(8,9,13,.96);
+    border-bottom: 1px solid #292933;
+    backdrop-filter: blur(10px);
+}
+
+.menu-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 14px 20px;
+}
+
+.menu a {
+    color: #ddd;
+    text-decoration: none;
+    margin-right: 18px;
+    font-size: 14px;
+}
+
+.menu a:hover {
+    color: #ff4fa3;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 35px 20px 80px;
+}
+
+/* BUSCA */
+.search {
+    margin-bottom: 30px;
+}
+
+.search input {
+    width: 100%;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 1px solid #34343e;
+    background: #111219;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.search input:focus {
+    border-color: #ff3d9a;
+    box-shadow: 0 0 15px rgba(255,61,154,.15);
+}
+
+/* SEÇÕES */
+section {
+    background: #111219;
+    border: 1px solid #292933;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.25);
+}
+
+section h2 {
+    color: #ff4fa3;
+    font-size: 25px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #302632;
+    padding-bottom: 10px;
+}
+
+section h3 {
+    color: #ff8ac5;
+    margin-top: 18px;
+    margin-bottom: 8px;
+}
+
+p {
+    color: #d7d7d7;
+    margin-bottom: 10px;
+}
+
+ul {
+    padding-left: 25px;
+}
+
+li {
+    margin: 8px 0;
+    color: #d8d8d8;
+}
+
+strong {
+    color: #fff;
+}
+
+/* HIERARQUIA */
+.hierarchy {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.rank {
+    background: linear-gradient(145deg, #171820, #0c0d12);
+    border: 1px solid #3b2634;
+    border-radius: 12px;
+    padding: 20px 10px;
+    text-align: center;
+    transition: .2s;
+}
+
+.rank:hover {
+    transform: translateY(-4px);
+    border-color: #ff3d9a;
+}
+
+.rank .number {
+    color: #ff3d9a;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.rank h3 {
+    margin: 5px 0;
+    color: white;
+}
+
+.rank p {
+    font-size: 13px;
+}
+
+/* AVISO */
+.warning {
+    border-left: 4px solid #ff3d9a;
+    background: #171018;
+    padding: 18px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.success {
+    border-left: 4px solid #65e6a5;
+    background: #0d1914;
+    padding: 18px;
+    border-radius: 8px;
+}
+
+/* TABELA */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 13px;
+    border: 1px solid #30303a;
+    text-align: left;
+}
+
+th {
+    background: #21131d;
+    color: #ff65b0;
+}
+
+td {
+    color: #d5d5d5;
+}
+
+/* BOTÃO TOPO */
+.top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #ff3d9a;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 5px 20px rgba(255,61,154,.3);
+}
+
+/* RODAPÉ */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid #292933;
+    color: #777;
+}
+
+footer strong {
+    color: #ff4fa3;
+}
+
+/* CELULAR */
+@media(max-width:700px) {
+    header {
+        min-height: 270px;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    .menu {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .menu a {
+        display: inline-block;
+        margin-right: 14px;
+    }
+}
+</style>
+</head>
+
+<body id="inicio">
+
+<header>
+    <div>
+        <div class="logo">WINX CITY</div>
+        <h1>MANUAL <span>STAFF</span></h1>
+        <p>Regulamento Oficial da Equipe Administrativa</p>
+        <p>Documento interno • WINX CITY</p>
+    </div>
+</header>
+
+<nav class="menu">
+    <div class="menu-container">
+        <a href="#hierarquia">Hierarquia</a>
+        <a href="#principios">Princípios</a>
+        <a href="#conduta">Conduta</a>
+        <a href="#atendimento">Atendimento</a>
+        <a href="#denuncias">Denúncias</a>
+        <a href="#punicoes">Punições</a>
+        <a href="#final">Disposições</a>
+    </div>
+</nav>
+
+<main class="container">
+
+<div class="search">
+    <input
+        type="text"
+        id="search"
+        placeholder="🔎 Pesquisar no Manual da Staff..."
+        onkeyup="buscar()"
+    >
+</div>
+
+<section id="apresentacao">
+<h2>📖 1. APRESENTAÇÃO</h2>
+
+<p>
+Este documento estabelece as normas, responsabilidades, procedimentos
+e padrões de conduta da equipe administrativa da <strong>WINX CITY</strong>.
+</p>
+
+<p>
+Todos os integrantes da Staff devem conhecer, respeitar e cumprir
+as regras estabelecidas neste manual.
+</p>
+
+<div class="warning">
+<strong>⚠️ IMPORTANTE:</strong>
+O cargo de Staff representa a administração da cidade. Todo integrante
+deve manter postura profissional, imparcial e respeitosa.
+</div>
+</section>
+
+
+<section id="hierarquia">
+<h2>👑 2. HIERARQUIA OFICIAL DA STAFF</h2>
+
+<p>
+A hierarquia deve ser respeitada por todos os membros da equipe.
+A ordem oficial é:
+</p>
+
+<div class="hierarchy">
+
+<div class="rank">
+<div class="number">01</div>
+<h3>CEO</h3>
+<p>Direção máxima da cidade.</p>
+</div>
+
+<div class="rank">
+<div class="number">02</div>
+<h3>C-LEVEL</h3>
+<p>Gestão estratégica e administrativa.</p>
+</div>
+
+<div class="rank">
+<div class="number">03</div>
+<h3>DIR</h3>
+<p>Direção e supervisão geral.</p>
+</div>
+
+<div class="rank">
+<div class="number">04</div>
+<h3>MNG</h3>
+<p>Gerenciamento das equipes.</p>
+</div>
+
+<div class="rank">
+<div class="number">05</div>
+<h3>ADM</h3>
+<p>Administração da cidade.</p>
+</div>
+
+<div class="rank">
+<div class="number">06</div>
+<h3>SV</h3>
+<p>Supervisão da Staff.</p>
+</div>
+
+<div class="rank">
+<div class="number">07</div>
+<h3>MOD</h3>
+<p>Moderação e fiscalização.</p>
+</div>
+
+<div class="rank">
+<div class="number">08</div>
+<h3>SUP</h3>
+<p>Suporte aos jogadores.</p>
+</div>
+
+<div class="rank">
+<div class="number">09</div>
+<h3>HELP</h3>
+<p>Atendimento inicial.</p>
+</div>
+
+</div>
+
+<div class="warning">
+<strong>📌 Regra:</strong>
+Nenhum Staff deve ignorar ou desrespeitar a hierarquia administrativa.
+</div>
+</section>
+
+
+<section>
+<h2>👑 3. FUNÇÕES DOS CARGOS</h2>
+
+<h3>CEO</h3>
+<p>
+Responsável pela direção máxima da WINX CITY, decisões estratégicas,
+estrutura geral e administração superior.
+</p>
+
+<h3>C-LEVEL</h3>
+<p>
+Auxilia diretamente a direção em decisões administrativas e na
+organização geral dos setores da cidade.
+</p>
+
+<h3>DIR — Diretor</h3>
+<p>
+Responsável pela gestão de setores, supervisão de equipes,
+organização administrativa e aplicação das diretrizes da direção.
+</p>
+
+<h3>MNG — Manager</h3>
+<p>
+Responsável pelo gerenciamento das equipes, acompanhamento dos Staffs,
+organização interna e comunicação com superiores.
+</p>
+
+<h3>ADM — Administrador</h3>
+<p>
+Atua diretamente na administração da cidade, auxiliando na resolução
+de problemas, fiscalização e atendimento de situações administrativas.
+</p>
+
+<h3>SV — Supervisor</h3>
+<p>
+Supervisiona moderadores, suportes e helpers, verificando o cumprimento
+das regras e procedimentos.
+</p>
+
+<h3>MOD — Moderador</h3>
+<p>
+Responsável pela moderação da cidade, fiscalização de situações,
+atendimento de ocorrências e aplicação das medidas autorizadas.
+</p>
+
+<h3>SUP — Suporte</h3>
+<p>
+Auxilia os jogadores, esclarece dúvidas e encaminha situações
+que necessitem de cargos superiores.
+</p>
+
+<h3>HELP — Helper</h3>
+<p>
+Realiza o atendimento inicial dos jogadores e auxilia nas dúvidas
+básicas, sempre respeitando os limites de sua função.
+</p>
+</section>
+
+
+<section id="principios">
+<h2>⚖️ 4. PRINCÍPIOS DA STAFF</h2>
+
+<ul>
+<li>Respeitar todos os jogadores.</li>
+<li>Respeitar a hierarquia interna.</li>
+<li>Agir com profissionalismo.</li>
+<li>Manter imparcialidade nas decisões.</li>
+<li>Não utilizar o cargo para benefício próprio.</li>
+<li>Não favorecer amigos, organizações ou jogadores.</li>
+<li>Manter sigilo sobre informações internas.</li>
+<li>Seguir as orientações da direção.</li>
+<li>Preservar a imagem da WINX CITY.</li>
+</ul>
+</section>
+
+
+<section id="conduta">
+<h2>🚨 5. CONDUTA PROFISSIONAL</h2>
+
+<p>
+O Staff deve manter comportamento adequado dentro e fora das funções
+administrativas.
+</p>
+
+<ul>
+<li>Não discutir com jogadores.</li>
+<li>Não provocar jogadores.</li>
+<li>Não utilizar palavras ofensivas durante atendimentos.</li>
+<li>Não abusar de comandos administrativos.</li>
+<li>Não ameaçar jogadores utilizando o cargo.</li>
+<li>Não utilizar informações internas para benefício próprio.</li>
+<li>Não criar conflitos entre Staffs.</li>
+</ul>
+</section>
+
+
+<section>
+<h2>🎮 6. STAFF EM RP</h2>
+
+<p>
+O Staff deve saber diferenciar sua função administrativa da participação
+em Roleplay.
+</p>
+
+<ul>
+<li>Não utilizar informações administrativas para obter vantagem no RP.</li>
+<li>Não utilizar comandos administrativos para benefício próprio.</li>
+<li>Não interferir em ações sem necessidade administrativa.</li>
+<li>Não utilizar informações obtidas como Staff durante situações de RP.</li>
+<li>Não favorecer sua própria organização.</li>
+</ul>
+</section>
+
+
+<section id="atendimento">
+<h2>🎧 7. ATENDIMENTO AO JOGADOR</h2>
+
+<p>
+Todo atendimento deve ser realizado com respeito, paciência e
+profissionalismo.
+</p>
+
+<ul>
+<li>Ler atentamente a solicitação.</li>
+<li>Responder o jogador de forma clara.</li>
+<li>Não abandonar atendimentos sem justificativa.</li>
+<li>Encaminhar problemas complexos para superiores.</li>
+<li>Evitar discussões.</li>
+<li>Registrar situações importantes quando necessário.</li>
+</ul>
+
+<div class="success">
+<strong>✅ Padrão:</strong>
+O jogador deve ser tratado com respeito independentemente de cargo,
+organização, amizade ou situação dentro da cidade.
+</div>
+</section>
+
+
+<section>
+<h2>⏳ 8. CANAL DE AGUARDO</h2>
+
+<p>
+Os membros da Staff devem acompanhar o canal de <strong>aguardo</strong>
+e responder às solicitações dos moradores sempre que estiverem
+disponíveis para atendimento.
+</p>
+
+<ul>
+<li>Não ignorar chamados sem motivo.</li>
+<li>Organizar a fila de atendimento.</li>
+<li>Encaminhar chamados quando necessário.</li>
+<li>Evitar deixar moradores aguardando sem resposta.</li>
+</ul>
+</section>
+
+
+<section id="denuncias">
+<h2>📋 9. DENÚNCIAS</h2>
+
+<p>
+Denúncias devem ser analisadas com imparcialidade e utilizando
+as provas disponíveis.
+</p>
+
+<ul>
+<li>Solicitar provas quando necessário.</li>
+<li>Analisar vídeos, imagens e relatos.</li>
+<li>Ouvir as partes envolvidas.</li>
+<li>Evitar decisões baseadas em amizade.</li>
+<li>Encaminhar casos graves para superiores.</li>
+</ul>
+
+<div class="warning">
+<strong>⚠️ Nunca:</strong>
+Aplicar punição apenas por opinião pessoal ou por desentendimento.
+</div>
+</section>
+
+
+<section>
+<h2>🔐 10. SIGILO E INFORMAÇÕES INTERNAS</h2>
+
+<p>
+Informações administrativas são de uso interno da equipe.
+</p>
+
+<ul>
+<li>Não divulgar prints de reuniões internas.</li>
+<li>Não compartilhar informações administrativas com jogadores.</li>
+<li>Não divulgar decisões internas antes de autorização.</li>
+<li>Não compartilhar informações de outros Staffs.</li>
+<li>Não utilizar informações internas para benefício pessoal.</li>
+</ul>
+</section>
+
+
+<section>
+<h2>🛡️ 11. ABUSO DE AUTORIDADE</h2>
+
+<p>
+É proibido utilizar o cargo administrativo para obter vantagens,
+intimidar jogadores ou interferir indevidamente em situações.
+</p>
+
+<ul>
+<li>Abuso de comandos.</li>
+<li>Favorecimento.</li>
+<li>Perseguição.</li>
+<li>Ameaças.</li>
+<li>Uso de informações privilegiadas.</li>
+<li>Interferência sem necessidade.</li>
+</ul>
+</section>
+
+
+<section>
+<h2>🎁 12. FAVORECIMENTO</h2>
+
+<p>
+Staffs devem manter tratamento igualitário entre os jogadores.
+</p>
+
+<p>
+Amizades, organizações, cargos ou relações pessoais não devem
+influenciar decisões administrativas.
+</p>
+</section>
+
+
+<section>
+<h2>💻 13. COMANDOS ADMINISTRATIVOS</h2>
+
+<p>
+Comandos administrativos devem ser utilizados exclusivamente para
+finalidades relacionadas à função do Staff.
+</p>
+
+<ul>
+<li>Não utilizar comandos para diversão pessoal.</li>
+<li>Não utilizar comandos para benefício próprio.</li>
+<li>Não utilizar comandos contra jogadores sem justificativa.</li>
+<li>Respeitar as permissões de cada cargo.</li>
+<li>Não solicitar comandos que não estejam autorizados para sua função.</li>
+</ul>
+</section>
+
+
+<section>
+<h2>📢 14. COMUNICAÇÃO INTERNA</h2>
+
+<p>
+A comunicação entre Staffs deve ser objetiva, respeitosa e organizada.
+</p>
+
+<ul>
+<li>Utilizar os canais corretos.</li>
+<li>Evitar discussões públicas.</li>
+<li>Resolver conflitos internamente.</li>
+<li>Comunicar problemas aos superiores.</li>
+<li>Manter informações importantes registradas.</li>
+</ul>
+</section>
+
+
+<section>
+<h2>📅 15. ATIVIDADE DA STAFF</h2>
+
+<p>
+A Staff deve manter presença e participação compatíveis com sua função.
+</p>
+
+<ul>
+<li>Participar das atividades administrativas.</li>
+<li>Responder atendimentos.</li>
+<li>Participar de reuniões quando convocado.</li>
+<li>Informar ausências quando necessário.</li>
+<li>Manter comunicação com seus superiores.</li>
+</ul>
+</section>
+
+
+<section>
+<h2>🕐 16. ESCALA E ORGANIZAÇÃO</h2>
+
+<p>
+A direção poderá organizar horários, escalas e atividades de acordo
+com as necessidades da cidade.
+</p>
+
+<p>
+Cada Staff deve cumprir as orientações recebidas dentro de sua função.
+</p>
+</section>
+
+
+<section>
+<h2>🎓 17. TREINAMENTO</h2>
+
+<p>
+Novos integrantes poderão passar por período de treinamento antes
+de receber responsabilidades maiores.
+</p>
+
+<ul>
+<li>Conhecimento das regras.</li>
+<li>Conhecimento dos comandos.</li>
+<li>Atendimento ao jogador.</li>
+<li>Procedimentos administrativos.</li>
+<li>Postura profissional.</li>
+</ul>
+</section>
+
+
+<section>
+<h2>📝 18. STAFF EM TREINAMENTO</h2>
+
+<p>
+O Staff em treinamento deve seguir as orientações de seus superiores
+e não realizar procedimentos que ultrapassem suas permissões.
+</p>
+
+<p>
+A promoção dependerá do desempenho, postura, atividade e necessidade
+da administração.
+</p>
+</section>
+
+
+<section>
+<h2>📱 19. DISCORD E COMUNICAÇÃO</h2>
+
+<ul>
+<li>Utilizar os canais corretos.</li>
+<li>Respeitar as regras do Discord.</li>
+<li>Não utilizar canais administrativos para assuntos inadequados.</li>
+<li>Não divulgar informações internas.</li>
+<li>Manter uma postura compatível com a equipe.</li>
+</ul>
+</section>
+
+
+<section>
+<h2>📸 20. REGISTROS E PROVAS</h2>
+
+<p>
+Situações administrativas importantes poderão ser registradas através
+de prints, vídeos, logs ou outras evidências disponíveis.
+</p>
+
+<p>
+Registros devem ser mantidos de forma organizada e utilizados apenas
+para finalidades administrativas.
+</p>
+</section>
+
+
+<section>
+<h2>⚠️ 21. MEDIDAS DISCIPLINARES</h2>
+
+<p>
+O descumprimento das regras poderá resultar em medidas administrativas,
+considerando a gravidade da situação e o histórico do Staff.
+</p>
+
+<div class="table-wrapper">
+<table>
+<tr>
+<th>Medida</th>
+<th>Possível aplicação</th>
+</tr>
+
+<tr>
+<td>Orientação</td>
+<td>Falhas leves ou primeira ocorrência.</td>
+</tr>
+
+<tr>
+<td>Advertência</td>
+<td>Descumprimentos que necessitem de registro.</td>
+</tr>
+
+<tr>
+<td>Suspensão</td>
+<td>Casos mais graves ou reincidência.</td>
+</tr>
+
+<tr>
+<td>Rebaixamento</td>
+<td>Perda de responsabilidade ou cargo.</td>
+</tr>
+
+<tr>
+<td>Remoção</td>
+<td>Casos graves ou incompatibilidade com a função.</td>
+</tr>
+</table>
+</div>
+</section>
+
+
+<section>
+<h2>🚫 22. INFRAÇÕES GRAVES</h2>
+
+<ul>
+<li>Abuso de autoridade.</li>
+<li>Favorecimento intencional.</li>
+<li>Vazamento de informações internas.</li>
+<li>Uso de comandos para benefício próprio.</li>
+<li>Perseguição de jogadores.</li>
+<li>Desrespeito grave à direção.</li>
+<li>Fraude ou corrupção administrativa.</li>
+<li>Uso indevido de permissões.</li>
+</ul>
+</section>
+
+
+<section>
+<h2>🎥 23. CRIADORES DE CONTEÚDO</h2>
+
+<p>
+Criadores de conteúdo poderão ser analisados pela direção conforme
+as necessidades e critérios internos da WINX CITY.
+</p>
+
+<p>
+A eventual contratação ou parceria será definida exclusivamente
+pela direção responsável.
+</p>
+</section>
+
+
+<section>
+<h2>🔑 24. CARGOS E PERMISSÕES</h2>
+
+<p>
+Cada cargo possui permissões compatíveis com sua responsabilidade.
+Nenhum Staff poderá criar, alterar ou conceder cargos e permissões
+sem autorização da direção competente.
+</p>
+
+<div class="warning">
+<strong>⚠️ Regra:</strong>
+É proibido criar ou modificar cargos, permissões ou funções sem
+autorização da direção.
+</div>
+</section>
+
+
+<section id="final">
+<h2>📜 25. DISPOSIÇÕES FINAIS</h2>
+
+<p>
+Este manual poderá ser atualizado pela administração da WINX CITY
+sempre que houver necessidade.
+</p>
+
+<p>
+Todos os membros da Staff são responsáveis por conhecer as regras
+vigentes e acompanhar possíveis alterações.
+</p>
+
+<div class="success">
+<strong>🩷 WINX CITY</strong><br>
+Nossa administração começa pelo respeito, organização,
+responsabilidade e trabalho em equipe.
+</div>
+</section>
+
+</main>
+
+<footer>
+<p>
+<strong>WINX CITY</strong><br>
+Manual Oficial da Staff
+</p>
+
+<p>Documento administrativo interno</p>
+</footer>
+
+<a class="top" href="#inicio">↑</a>
+
+<script>
+function buscar() {
+    const termo = document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+    const secoes = document.querySelectorAll("section");
+
+    secoes.forEach(secao => {
+        const texto = secao.innerText.toLowerCase();
+
+        if (texto.includes(termo)) {
+            secao.style.display = "";
+        } else {
+            secao.style.display = "none";
+        }
+    });
+}
+</script>
+
+</body>
+</html>
